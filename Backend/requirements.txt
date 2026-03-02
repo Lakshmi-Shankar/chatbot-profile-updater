@@ -1,11 +1,11 @@
 fastapi
-uvicorn
-pydantic
+uvicorn[standard]
+python-dotenv
+pydantic[email]
 bcrypt
 PyJWT
-python-dotenv
 langchain
-langchain-google-genai
 langchain-core
-google-generativeai
-pydantic[email]
+langchain-groq
+langgraph
+groq
