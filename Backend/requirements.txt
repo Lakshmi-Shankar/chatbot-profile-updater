@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+bcrypt
+PyJWT
+python-dotenv
+langchain
+langchain-google-genai
+langchain-core
+google-generativeai
