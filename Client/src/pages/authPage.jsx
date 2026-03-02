@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const API_BASE = "http://127.0.0.1:8000/auth";
+const API_BASE = "https://chatbot-profile-updater.onrender.com/auth";
 
 export default function AuthPage() {
   const [mode, setMode] = useState("login");
