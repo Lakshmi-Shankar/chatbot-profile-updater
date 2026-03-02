@@ -43,13 +43,19 @@ export default function AuthPage() {
             : "Something went wrong.";
         setStatus({ type: "error", message: msg });
       } else {
-        setStatus({
-          type: "success",
-          message: isLogin
-            ? `Welcome back, ${data.user?.full_name}!`
-            : "Account created! You can now sign in.",
-        });
-        if (data.token) localStorage.setItem("token", data.token);
+        // ── Auto-login after register ──────────────────────
+        if (!isLogin) {
+          const loginRes = await fetch(`${API_BASE}/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: form.email, password: form.password }),
+          });
+          const loginData = await loginRes.json();
+          if (loginData.token) localStorage.setItem("token", loginData.token);
+        } else {
+          if (data.token) localStorage.setItem("token", data.token);
+        }
+        // ──────────────────────────────────────────────────
         navigate("/dashboard");
       }
     } catch {
